@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Person
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Person\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ checkKeys()
+comment2.text=se\ o\ jogador\ presionar\ ->\ mexe\ para\ a\ direita,\ se\ presionar\r\n\ <-\ mexe\ para\ a\ esquerda\ e\ inverte\ a\ imagem\ \r\n
+comment3.params=
+comment3.target=void\ fall()
+comment4.params=
+comment4.target=boolean\ onGround()
+comment5.params=
+comment5.target=void\ checkFall()
+comment6.params=
+comment6.target=void\ jump()
+numComments=7
