@@ -16,11 +16,15 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
+        super(800, 550, 1);
         prepare();
+        setBackground("barcoJantar.png");
     }
     public void prepare(){
-        addObject(new Person(), Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));
-    
+        addObject(new Person("left", "right", "up", "person.png"), 300, 360);
+        addObject(new Person("a", "d", "w", "person.png"), 320, 360);
+        addObject(new Ground(760, 40), 645, 420);
+        addObject(new Wall(265, 572), 132, 286);
+        addObject(new Wall(130, 100), 560, 380);
     }
 }

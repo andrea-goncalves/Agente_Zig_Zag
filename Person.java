@@ -16,8 +16,22 @@ public class Person extends Actor
     private int speed=7; //incremento do movimento lateral
     private int verticalSpeed=0;//incremento do movimento vertical
     private int acceleration=2;
-    private int jumpStrenght=10;
+    private int jumpStrenght=18;
+    private GreenfootImage imagePerson;
     
+    private String leftKey;
+    private String rightKey;
+    private String jumpKey;
+    public Person(String leftKey, String rightKey, String jumpKey, String imageName){
+        this.leftKey = leftKey;
+        this.rightKey = rightKey;
+        this.jumpKey = jumpKey;
+        setImage("person.png");
+        imagePerson= getImage();
+        int larguraAtual= imagePerson.getWidth();
+        int alturaAtual= imagePerson.getHeight();
+        imagePerson.scale(larguraAtual*2, alturaAtual*2);
+    }
     public void act() {
         checkKeys();
         checkFall();
@@ -26,15 +40,15 @@ public class Person extends Actor
      * <- mexe para a esquerda e inverte a imagem 
      */ 
     public void  checkKeys(){
-        if (Greenfoot.isKeyDown("left")){
+        if (Greenfoot.isKeyDown(leftKey) &&  !touchingWall(-getImage().getWidth()/2 - speed)){
             getImage().mirrorHorizontally();
             setLocation(getX()-speed, getY());
         }
-         if (Greenfoot.isKeyDown("right")){
+         if (Greenfoot.isKeyDown(rightKey) && !touchingWall(getImage().getWidth()/2 + speed)){
             
             setLocation(getX()+speed, getY());
         }
-        if(Greenfoot.isKeyDown("up")){
+        if(Greenfoot.isKeyDown(jumpKey)&& onGround()){
             jump();
         }
     }
@@ -47,7 +61,10 @@ public class Person extends Actor
         return under!=null;
     }
     public void checkFall(){
-        if (onGround()){
+        if (onGround()&& verticalSpeed >= 0){
+            while (getOneObjectAtOffset(0, getImage().getHeight()/2, Ground.class) != null){
+                setLocation(getX(), getY()-1);
+            }
             verticalSpeed=0;
         }
         else {
@@ -58,6 +75,10 @@ public class Person extends Actor
         verticalSpeed=-jumpStrenght;
         fall();
     }
+    
+    public boolean touchingWall(int dx){
+    return getOneObjectAtOffset(dx, 0, Wall.class) != null;
+}
 }
     
     

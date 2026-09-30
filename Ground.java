@@ -16,4 +16,11 @@ public class Ground extends Actor
     {
         // Add your action code here.
     }
+    public Ground(int width, int height)
+    {
+        GreenfootImage img = new GreenfootImage(width, height);
+        //img.setColor(new Color(0, 255, 0, 100));
+        //img.fill();
+        setImage(img);
+    }
 }
